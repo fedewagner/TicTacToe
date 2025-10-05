@@ -5,7 +5,8 @@
         static void Main(string[] args)
         {
             UserInterface.WelcomeUser();
-            UserInterface.PrintingEmptyGrid();
+            UserInterface.PrintEmptyGrid();
+            UserInterface.PrintCurrentGrid();
         }
     }
 }
