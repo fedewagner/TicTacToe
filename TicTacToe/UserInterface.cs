@@ -9,7 +9,7 @@ public class UserInterface
         Console.WriteLine("The first who makes 3 in a line, wins!");
     }
 
-    public static void ExplainTheRulesToUser(int dimension, string[] symbols, List<int> availablePositions)
+    public static void ExplainTheRulesToUser(int dimension, List<int> availablePositions)
     {
         //Print the upper border (one extra at the beginning and one at the end)
         Console.WriteLine("To place your Symbol 'O', indicate the position from 1 to 9:");
@@ -45,8 +45,8 @@ public class UserInterface
 
                 //Print the output
                 Console.Write("  " + availablePositions[i] + "  ");
-                i++;
                 Console.ForegroundColor = ConsoleColor.Gray;
+                i++;
             }
 
             //print last Character each row
@@ -64,7 +64,7 @@ public class UserInterface
         Console.WriteLine("+");
     }
     
-    public static void PrintCurrentGrid(int dimension, string[] symbols)
+    public static void PrintCurrentGrid(int dimension, string[,] gridCharacters)
     {
         //Print the upper border (one extra at the beginning and one at the end)
         Console.WriteLine("The current grid looks like:");
@@ -99,8 +99,7 @@ public class UserInterface
                 }
 
                 //Print the output
-                Console.Write("  " + symbols[i] + "  ");
-                i++;
+                Console.Write("  " + gridCharacters[row,col] + "  ");
                 Console.ForegroundColor = ConsoleColor.Gray;
             }
 
@@ -119,7 +118,7 @@ public class UserInterface
         Console.WriteLine("+");
     }
 
-    public static void IntroduceUserSymbol(int dimension, string[] symbols,  List<int> availablePositions)
+    public static void IntroduceUserSymbol(int dimension, string[,] gridCharacters,  List<int> availablePositions)
     {
         int selectionPosition;
         bool validSelection = false;
@@ -132,9 +131,14 @@ public class UserInterface
         
         int positionIndex = selectionPosition - 1; // index shift => -1
         availablePositions.RemoveAt(positionIndex);
-        symbols[positionIndex] = "O";
+        
+        //conversion formulas from positions to grid
+        int row = (selectionPosition - 1) / 3;   // 0-based row
+        int col = (selectionPosition - 1) % 3;   // 0-based column
+        
+        gridCharacters[row, col] = "O";
         Console.WriteLine("You selected your next position: ");
-        PrintCurrentGrid(dimension, symbols);
+        PrintCurrentGrid(dimension, gridCharacters);
     }
 
 }
