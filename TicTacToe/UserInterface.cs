@@ -9,7 +9,7 @@ public class UserInterface
         Console.WriteLine("The first who makes 3 in a line, wins!");
     }
 
-    public static void PrintEmptyGrid()
+    public static void PrintEmptyGrid(string[] Symbols)
     {
         //Print the upper border (one extra at the beginning and one at the end)
         Console.WriteLine("To place your Symbol 'O', indicate the position from 1 to 9:");
@@ -66,13 +66,13 @@ public class UserInterface
         Console.WriteLine("+");
     }
     
-    public static void PrintCurrentGrid()
+    public static void PrintCurrentGrid(string[] Symbols)
     {
         //Print the upper border (one extra at the beginning and one at the end)
-        Console.WriteLine("Tthe current grid looks like:");
+        Console.WriteLine("The current grid looks like:");
 
         const int DIMENSION = 3;
-        string[] Symbols = {"_", "_", "_", "_", "_", "_", "_", "_", "_" };
+        
         int i = 0;
 
         Console.Write("+");
@@ -122,5 +122,22 @@ public class UserInterface
 
         Console.WriteLine("+");
     }
-    
+
+    public static void IntroduceUserSymbol(string[] Symbols)
+    {
+        int selectionPosition;
+        bool validSelection = false;
+        
+        do
+        {
+            Console.WriteLine("In which position would you like to introduce your next 'O'?");
+            validSelection = int.TryParse(Console.ReadKey(true).KeyChar.ToString(), out selectionPosition);
+        } while (!validSelection);
+        
+        int positionIndex = selectionPosition - 1; // index shift => -1
+        Symbols[positionIndex] = "O";
+        Console.WriteLine("You selected your next position: ");
+        PrintCurrentGrid(Symbols);
+    }
+
 }
