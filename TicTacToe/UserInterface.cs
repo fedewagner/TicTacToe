@@ -9,13 +9,12 @@ public class UserInterface
         Console.WriteLine("The first who makes 3 in a line, wins!");
     }
 
-    public static void PrintEmptyGrid(string[] Symbols)
+    public static void ExplainTheRulesToUser(string[] Symbols, List<int> availablePositions)
     {
         //Print the upper border (one extra at the beginning and one at the end)
         Console.WriteLine("To place your Symbol 'O', indicate the position from 1 to 9:");
 
         const int DIMENSION = 3;
-        int[] Positions = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         int i = 0;
 
         Console.Write("+");
@@ -46,7 +45,7 @@ public class UserInterface
                 }
 
                 //Print the output
-                Console.Write("  " + Positions[i] + "  ");
+                Console.Write("  " + availablePositions[i] + "  ");
                 i++;
                 Console.ForegroundColor = ConsoleColor.Gray;
             }
@@ -123,7 +122,7 @@ public class UserInterface
         Console.WriteLine("+");
     }
 
-    public static void IntroduceUserSymbol(string[] Symbols)
+    public static void IntroduceUserSymbol(string[] Symbols,  List<int> availablePositions)
     {
         int selectionPosition;
         bool validSelection = false;
@@ -135,6 +134,7 @@ public class UserInterface
         } while (!validSelection);
         
         int positionIndex = selectionPosition - 1; // index shift => -1
+        availablePositions.RemoveAt(positionIndex);
         Symbols[positionIndex] = "O";
         Console.WriteLine("You selected your next position: ");
         PrintCurrentGrid(Symbols);
