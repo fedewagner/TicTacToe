@@ -16,7 +16,6 @@
             //define locations
             List<int> availablePositions = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-            
             //Just welcome the user with general information
             UserInterface.WelcomeUser();
             
@@ -32,19 +31,14 @@
             //Pick one for the AI
             Logic.PickAvailablePositionForAi(gridCharacters, availablePositions);
             
-            
             //shows how the current grid looks
             UserInterface.PrintCurrentGrid(DIMENSION, gridCharacters);
             
             //Checking Horizontals
-
-            /*
-            bool isThereAWinner = false;
             
+            bool isThereAWinner;
             isThereAWinner = Logic.CheckingAllHorizontalLines(gridCharacters);
             Console.WriteLine($"Is there already a Horizontal winner? {isThereAWinner}");
-            */
-
         }
     }
 }
