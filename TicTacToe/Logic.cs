@@ -49,8 +49,8 @@ public class Logic
         }
         return false;
     }
-    
-    
+
+
     private static bool CheckingAllHorizontalLines(string[,] charactersGrid)
     {
         int rows = charactersGrid.GetLength(0);
@@ -62,8 +62,6 @@ public class Logic
             {
                 anyRowWinning = true;
             }
-
-            ;
         }
 
         return anyRowWinning;
@@ -80,8 +78,6 @@ public class Logic
             {
                 anyColWinning = true;
             }
-
-            ;
         }
 
         return anyColWinning;

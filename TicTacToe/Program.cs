@@ -7,9 +7,6 @@
 
             const int DIMENSION = 3;
             
-            /*// Definition of Symbols String
-            string[] gridSymbols = {"_", "_", "_", "_", "_", "_", "_", "_", "_" };*/
-
             //Define and Fill Empty grid
             string[,] gridCharacters = Logic.FillEmptyGrid(DIMENSION);
             
@@ -24,21 +21,31 @@
             
             //shows how the current grid looks
             UserInterface.PrintCurrentGrid(DIMENSION, gridCharacters);
+
+            while (availablePositions.Count > 0)
+            {
+                
+                //Ask for location of the first users Symbol
+                UserInterface.IntroduceUserSymbol(DIMENSION, gridCharacters, availablePositions);
             
-            //Ask for location of the first users Symbol
-            UserInterface.IntroduceUserSymbol(DIMENSION, gridCharacters, availablePositions);
+                //Pick one for the AI
+                Logic.PickAvailablePositionForAi(gridCharacters, availablePositions);
             
-            //Pick one for the AI
-            Logic.PickAvailablePositionForAi(gridCharacters, availablePositions);
+                //shows how the current grid looks
+                UserInterface.PrintCurrentGrid(DIMENSION, gridCharacters);
             
-            //shows how the current grid looks
-            UserInterface.PrintCurrentGrid(DIMENSION, gridCharacters);
+                //Checking Horizontals
             
-            //Checking Horizontals
+                bool isThereAWinner;
+                isThereAWinner = Logic.CheckingWinners(gridCharacters);
+
+                if (isThereAWinner)
+                {
+                    Console.WriteLine($"Is there already a Horizontal winner? {isThereAWinner}");    
+                }
+              
+            }
             
-            bool isThereAWinner;
-            isThereAWinner = Logic.CheckingWinners(gridCharacters);
-            Console.WriteLine($"Is there already a Horizontal winner? {isThereAWinner}");
         }
     }
 }

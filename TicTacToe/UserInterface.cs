@@ -122,15 +122,15 @@ public class UserInterface
     {
         int selectionPosition;
         bool validSelection = false;
+        List<int> listOfPositions = [1, 2, 3, 4, 5, 6, 7, 8, 9];
         
         do
         {
             Console.WriteLine("In which position would you like to introduce your next 'O'?");
             validSelection = int.TryParse(Console.ReadKey(true).KeyChar.ToString(), out selectionPosition);
-        } while (!validSelection);
+        } while (!validSelection || !availablePositions.Contains(selectionPosition));
         
-        int positionIndex = selectionPosition - 1; // index shift => -1
-        availablePositions.RemoveAt(positionIndex);
+        availablePositions.Remove(selectionPosition);
         
         //conversion formulas from positions to grid
         int row = (selectionPosition - 1) / 3;   // 0-based row
