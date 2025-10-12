@@ -6,7 +6,7 @@
         {
             
             // Definition of Symbols String
-            string[] Symbols = {"_", "_", "_", "_", "_", "_", "_", "_", "_" };
+            string[] gridSymbols = {"_", "_", "_", "_", "_", "_", "_", "_", "_" };
             List<int> availablePositions = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
             
@@ -14,13 +14,20 @@
             UserInterface.WelcomeUser();
             
             //explains the positions to the user
-            UserInterface.ExplainTheRulesToUser(Symbols, availablePositions);
+            UserInterface.ExplainTheRulesToUser(gridSymbols, availablePositions);
             
             //shows how the current grid looks
-            UserInterface.PrintCurrentGrid(Symbols);
+            UserInterface.PrintCurrentGrid(gridSymbols);
             
             //Ask for location of the first users Symbol
-            UserInterface.IntroduceUserSymbol(Symbols, availablePositions);
+            UserInterface.IntroduceUserSymbol(gridSymbols, availablePositions);
+            
+            //Pick one for the AI
+            gridSymbols = Logic.pickAvailablePositionForAI(gridSymbols, availablePositions);
+            
+            //shows how the current grid looks
+            UserInterface.PrintCurrentGrid(gridSymbols);
+            
         }
     }
 }
