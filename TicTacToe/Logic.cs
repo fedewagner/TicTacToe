@@ -36,7 +36,7 @@ public class Logic
     }
 
 
-    public static bool CheckingWinners(string[,] gridCharacters)
+    public static bool CheckingLines(string[,] gridCharacters)
     {
         bool isHorizontalWinner = CheckingAllHorizontalLines(gridCharacters);
         bool isVerticalWinner = CheckingAllVerticalLines(gridCharacters);

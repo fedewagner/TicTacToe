@@ -141,4 +141,17 @@ public class UserInterface
         PrintCurrentGrid(dimension, gridCharacters);
     }
 
+    public static void CheckingWinners(string[,] gridCharacters)
+    {
+        bool isThereAWinner;
+        
+        //Checking winners
+        isThereAWinner = Logic.CheckingLines(gridCharacters);
+                
+        if (isThereAWinner)
+        {
+            Console.WriteLine($"There is a winner!");    
+        }
+    }
+
 }

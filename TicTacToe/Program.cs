@@ -21,28 +21,33 @@
             
             //shows how the current grid looks
             UserInterface.PrintCurrentGrid(DIMENSION, gridCharacters);
-
+            
+            
+            
             while (availablePositions.Count > 0)
             {
+            
                 
                 //Ask for location of the first users Symbol
                 UserInterface.IntroduceUserSymbol(DIMENSION, gridCharacters, availablePositions);
+                
+                //checking if User won
+                UserInterface.CheckingWinners(gridCharacters);
+                
+                //shows how the current grid looks
+                UserInterface.PrintCurrentGrid(DIMENSION, gridCharacters);
             
                 //Pick one for the AI
                 Logic.PickAvailablePositionForAi(gridCharacters, availablePositions);
             
                 //shows how the current grid looks
                 UserInterface.PrintCurrentGrid(DIMENSION, gridCharacters);
+                
+                //checking if AI won
+                UserInterface.CheckingWinners(gridCharacters);
+                
             
-                //Checking Horizontals
-            
-                bool isThereAWinner;
-                isThereAWinner = Logic.CheckingWinners(gridCharacters);
-
-                if (isThereAWinner)
-                {
-                    Console.WriteLine($"Is there already a Horizontal winner? {isThereAWinner}");    
-                }
+                
               
             }
             
