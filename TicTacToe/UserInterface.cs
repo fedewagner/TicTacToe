@@ -121,8 +121,9 @@ public class UserInterface
     public static void IntroduceUserSymbol(int dimension, string[,] gridCharacters,  List<int> availablePositions)
     {
         int selectionPosition;
-        bool validSelection = false;
-        List<int> listOfPositions = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        bool validSelection;
+        
+       
         
         do
         {

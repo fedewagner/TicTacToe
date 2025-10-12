@@ -33,22 +33,23 @@
                 
                 //checking if User won
                 UserInterface.CheckingWinners(gridCharacters);
+
+            
                 
                 //shows how the current grid looks
                 UserInterface.PrintCurrentGrid(DIMENSION, gridCharacters);
-            
+                
+                
+                //MISSING METHOD TO HANDLE CASE IF THERE IS A TIE!
+                
                 //Pick one for the AI
                 Logic.PickAvailablePositionForAi(gridCharacters, availablePositions);
-            
+
                 //shows how the current grid looks
                 UserInterface.PrintCurrentGrid(DIMENSION, gridCharacters);
                 
                 //checking if AI won
                 UserInterface.CheckingWinners(gridCharacters);
-                
-            
-                
-              
             }
             
         }
