@@ -9,16 +9,15 @@ public class UserInterface
         Console.WriteLine("The first who makes 3 in a line, wins!");
     }
 
-    public static void ExplainTheRulesToUser(string[] Symbols, List<int> availablePositions)
+    public static void ExplainTheRulesToUser(int dimension, string[] symbols, List<int> availablePositions)
     {
         //Print the upper border (one extra at the beginning and one at the end)
         Console.WriteLine("To place your Symbol 'O', indicate the position from 1 to 9:");
 
-        const int DIMENSION = 3;
         int i = 0;
 
         Console.Write("+");
-        for (int column = 0; column < DIMENSION; column++)
+        for (int column = 0; column < dimension; column++)
         {
             Console.Write("--+--");
         }
@@ -29,11 +28,11 @@ public class UserInterface
         // int item = 0;
 
         //fill the array
-        for (int row = 0; row < DIMENSION; row++)
+        for (int row = 0; row < dimension; row++)
         {
             //print first Character each row
             Console.Write("|");
-            for (int col = 0; col < DIMENSION; col++)
+            for (int col = 0; col < dimension; col++)
             {
                 if (col % 2 != 0)
                 {
@@ -57,7 +56,7 @@ public class UserInterface
 
         //Print the bottom border(one extra at the beginning and one at the end)
         Console.Write("+");
-        for (int column = 0; column < DIMENSION; column++)
+        for (int column = 0; column < dimension; column++)
         {
             Console.Write("--+--");
         }
@@ -65,17 +64,15 @@ public class UserInterface
         Console.WriteLine("+");
     }
     
-    public static void PrintCurrentGrid(string[] Symbols)
+    public static void PrintCurrentGrid(int dimension, string[] symbols)
     {
         //Print the upper border (one extra at the beginning and one at the end)
         Console.WriteLine("The current grid looks like:");
 
-        const int DIMENSION = 3;
-        
         int i = 0;
 
         Console.Write("+");
-        for (int column = 0; column < DIMENSION; column++)
+        for (int column = 0; column < dimension; column++)
         {
             Console.Write("--+--");
         }
@@ -86,11 +83,11 @@ public class UserInterface
         // int item = 0;
 
         //fill the array
-        for (int row = 0; row < DIMENSION; row++)
+        for (int row = 0; row < dimension; row++)
         {
             //print first Character each row
             Console.Write("|");
-            for (int col = 0; col < DIMENSION; col++)
+            for (int col = 0; col < dimension; col++)
             {
                 if (col % 2 != 0)
                 {
@@ -102,7 +99,7 @@ public class UserInterface
                 }
 
                 //Print the output
-                Console.Write("  " + Symbols[i] + "  ");
+                Console.Write("  " + symbols[i] + "  ");
                 i++;
                 Console.ForegroundColor = ConsoleColor.Gray;
             }
@@ -114,7 +111,7 @@ public class UserInterface
 
         //Print the bottom border(one extra at the beginning and one at the end)
         Console.Write("+");
-        for (int column = 0; column < DIMENSION; column++)
+        for (int column = 0; column < dimension; column++)
         {
             Console.Write("--+--");
         }
@@ -122,7 +119,7 @@ public class UserInterface
         Console.WriteLine("+");
     }
 
-    public static void IntroduceUserSymbol(string[] Symbols,  List<int> availablePositions)
+    public static void IntroduceUserSymbol(int dimension, string[] symbols,  List<int> availablePositions)
     {
         int selectionPosition;
         bool validSelection = false;
@@ -135,9 +132,9 @@ public class UserInterface
         
         int positionIndex = selectionPosition - 1; // index shift => -1
         availablePositions.RemoveAt(positionIndex);
-        Symbols[positionIndex] = "O";
+        symbols[positionIndex] = "O";
         Console.WriteLine("You selected your next position: ");
-        PrintCurrentGrid(Symbols);
+        PrintCurrentGrid(dimension, symbols);
     }
 
 }
