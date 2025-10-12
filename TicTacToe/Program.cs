@@ -37,7 +37,7 @@
             //Checking Horizontals
             
             bool isThereAWinner;
-            isThereAWinner = Logic.CheckingAllHorizontalLines(gridCharacters);
+            isThereAWinner = Logic.CheckingWinners(gridCharacters);
             Console.WriteLine($"Is there already a Horizontal winner? {isThereAWinner}");
         }
     }
