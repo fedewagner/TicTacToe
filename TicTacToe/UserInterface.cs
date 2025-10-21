@@ -151,7 +151,13 @@ public class UserInterface
         {
             Console.WriteLine($"There is a winner!");    
         }
+        
         return isThereAWinner;
+    }
+
+    public static void InformTie()
+    {
+        Console.WriteLine("There is a Tie! Try again later!");
     }
 
 }

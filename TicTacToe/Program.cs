@@ -22,21 +22,27 @@
             //shows how the current grid looks with the positions
             UserInterface.PrintCurrentGrid(DIMENSION, gridCharacters);
             
-            while (availablePositions.Count > 0)
-            {
+            bool isThereAWinner = false;
             
+            while (availablePositions.Count > 0 && !isThereAWinner)
+            {
+                
                 //Ask for location of the first users Symbol
                 UserInterface.IntroduceUserSymbol(DIMENSION, gridCharacters, availablePositions);
-                
-                bool isThereAWinner = false;
-                
+
+
                 //checking if User won
                 isThereAWinner = UserInterface.CheckingWinners(gridCharacters);
 
-                if (isThereAWinner)
+                if (isThereAWinner )
                 {break;}
                 
-                //MISSING METHOD TO HANDLE CASE IF THERE IS A TIE!
+                
+                //in case all Positions where taken => break
+                if (availablePositions.Count == 0)
+                {
+                    break;
+                }
                 
                 //Pick one for the AI
                 Logic.PickAvailablePositionForAi(gridCharacters, availablePositions);
@@ -45,10 +51,15 @@
                 UserInterface.PrintCurrentGrid(DIMENSION, gridCharacters);
                 
                 //checking if AI won
-                UserInterface.CheckingWinners(gridCharacters);
+                isThereAWinner = UserInterface.CheckingWinners(gridCharacters);
                 
                 if (isThereAWinner)
                 {break;}
+            }
+
+            if (availablePositions.Count == 0)
+            {
+                UserInterface.InformTie();
             }
             
         }
