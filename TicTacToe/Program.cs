@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-
+            //grid dimension. TICTACTOE = 3X3
             const int DIMENSION = 3;
             
             //Define and Fill Empty grid
@@ -23,13 +23,11 @@
             UserInterface.PrintCurrentGrid(DIMENSION, gridCharacters);
             
             bool isThereAWinner = false;
-            
             while (availablePositions.Count > 0 && !isThereAWinner)
             {
                 
                 //Ask for location of the first users Symbol
                 UserInterface.IntroduceUserSymbol(DIMENSION, gridCharacters, availablePositions);
-
 
                 //checking if User won
                 isThereAWinner = UserInterface.CheckingWinners(gridCharacters);
@@ -37,8 +35,7 @@
                 if (isThereAWinner )
                 {break;}
                 
-                
-                //in case all Positions where taken => break
+                //in case all Positions where taken and no winner yet => break because of tie game
                 if (availablePositions.Count == 0)
                 {
                     break;
