@@ -123,8 +123,6 @@ public class UserInterface
         int selectionPosition;
         bool validSelection;
         
-       
-        
         do
         {
             Console.WriteLine("In which position would you like to introduce your next 'O'?");
@@ -142,7 +140,7 @@ public class UserInterface
         PrintCurrentGrid(dimension, gridCharacters);
     }
 
-    public static void CheckingWinners(string[,] gridCharacters)
+    public static bool CheckingWinners(string[,] gridCharacters)
     {
         bool isThereAWinner;
         
@@ -153,6 +151,7 @@ public class UserInterface
         {
             Console.WriteLine($"There is a winner!");    
         }
+        return isThereAWinner;
     }
 
 }

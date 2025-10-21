@@ -19,26 +19,22 @@
             //explains the positions to the user
             UserInterface.ExplainTheRulesToUser(DIMENSION, availablePositions);
             
-            //shows how the current grid looks
+            //shows how the current grid looks with the positions
             UserInterface.PrintCurrentGrid(DIMENSION, gridCharacters);
-            
-            
             
             while (availablePositions.Count > 0)
             {
             
-                
                 //Ask for location of the first users Symbol
                 UserInterface.IntroduceUserSymbol(DIMENSION, gridCharacters, availablePositions);
                 
+                bool isThereAWinner = false;
+                
                 //checking if User won
-                UserInterface.CheckingWinners(gridCharacters);
+                isThereAWinner = UserInterface.CheckingWinners(gridCharacters);
 
-            
-                
-                //shows how the current grid looks
-                UserInterface.PrintCurrentGrid(DIMENSION, gridCharacters);
-                
+                if (isThereAWinner)
+                {break;}
                 
                 //MISSING METHOD TO HANDLE CASE IF THERE IS A TIE!
                 
@@ -50,6 +46,9 @@
                 
                 //checking if AI won
                 UserInterface.CheckingWinners(gridCharacters);
+                
+                if (isThereAWinner)
+                {break;}
             }
             
         }
