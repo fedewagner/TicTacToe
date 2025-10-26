@@ -151,18 +151,17 @@ public class UserInterface
         
         //Checking winners
         isThereAWinner = Logic.CheckingLines(gridCharacters);
-                
-        if (isThereAWinner)
-        {
-            Console.WriteLine($"There is a winner!");    
-        }
-        
         return isThereAWinner;
     }
 
     public static void InformTie()
     {
         Console.WriteLine("There is a Tie! Try again later!");
+    }
+
+    public static void InformWinners()
+    {
+        Console.WriteLine($"There is a winner!");    
     }
 
 }

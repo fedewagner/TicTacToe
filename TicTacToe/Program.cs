@@ -36,8 +36,11 @@
                 //checking if User won
                 isThereAWinner = UserInterface.CheckingWinners(gridCharacters);
 
-                if (isThereAWinner )
-                {break;}
+                if (isThereAWinner)
+                {
+                    UserInterface.InformWinners();
+                    break;
+                }
                 
                 //in case all Positions where taken and no winner yet => break because of tie game
                 if (availablePositions.Count == 0)
@@ -53,9 +56,12 @@
                 
                 //checking if AI won
                 isThereAWinner = UserInterface.CheckingWinners(gridCharacters);
-                
+
                 if (isThereAWinner)
-                {break;}
+                {
+                    UserInterface.InformWinners();
+                    break;
+                }
             }
 
             if (availablePositions.Count == 0)
