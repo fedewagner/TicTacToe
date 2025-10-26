@@ -9,11 +9,15 @@ public class UserInterface
         Console.WriteLine("The first who makes 3 in a line, wins!");
     }
 
-    public static void ExplainTheRulesToUser(int dimension, List<int> availablePositions)
+    public static void ExplainTheRulesToUser()
     {
         //Print the upper border (one extra at the beginning and one at the end)
         Console.WriteLine("To place your Symbol 'O', indicate the position from 1 to 9:");
+        
+    }
 
+    public static void PrintEmptyGrid(int dimension, List<int> availablePositions)
+    {
         int i = 0;
 
         Console.Write("+");
@@ -63,6 +67,7 @@ public class UserInterface
 
         Console.WriteLine("+");
     }
+    
     
     public static void PrintCurrentGrid(int dimension, string[,] gridCharacters)
     {

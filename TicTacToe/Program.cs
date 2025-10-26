@@ -18,7 +18,10 @@
             UserInterface.WelcomeUser();
             
             //explains the positions to the user
-            UserInterface.ExplainTheRulesToUser(DIMENSION, availablePositions);
+            UserInterface.ExplainTheRulesToUser();
+            
+            //Print empty grid with the positions
+            UserInterface.PrintEmptyGrid(DIMENSION, availablePositions);
             
             //shows how the current grid looks with the positions
             UserInterface.PrintCurrentGrid(DIMENSION, gridCharacters);
