@@ -11,7 +11,6 @@ public class Logic
         for (int row = 0; row < dimension; row++)
         {
             //print first Character each row
-            Console.Write("|");
             for (int col = 0; col < dimension; col++)
             {
                 gridCharacters[row, col] = "_";
