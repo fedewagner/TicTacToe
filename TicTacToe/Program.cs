@@ -6,13 +6,13 @@
         {
 
             //grid dimension. TICTACTOE = 3X3
-            const int DIMENSION = 3;
+            const int DIMENSION = 5;
             
             //Define and Fill Empty grid
             string[,] gridCharacters = Logic.FillEmptyGrid(DIMENSION);
             
             //define locations
-            List<int> availablePositions = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+            List<int> availablePositions = Logic.GeneratePositions(DIMENSION);
 
             //Just welcome the user with general information
             UserInterface.WelcomeUser();
@@ -49,7 +49,7 @@
                 }
                 
                 //Pick one for the AI
-                Logic.PickAvailablePositionForAi(gridCharacters, availablePositions);
+                Logic.PickAvailablePositionForAi(gridCharacters, availablePositions, DIMENSION);
 
                 //shows how the current grid looks
                 UserInterface.PrintCurrentGrid(DIMENSION, gridCharacters);

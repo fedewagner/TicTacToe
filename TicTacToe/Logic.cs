@@ -3,6 +3,19 @@ namespace TicTacToe;
 public class Logic
 {
 
+    public static List<int> GeneratePositions(int n)
+    {
+        int limit = n * n;
+        List<int> positions = new List<int>();
+
+        for (int i = 1; i <= limit; i++)
+        {
+            positions.Add(i);
+        }
+
+        return positions;
+    }
+    
     public static string[,] FillEmptyGrid(int dimension)
     {
         string[,] gridCharacters = new string[dimension, dimension];
@@ -20,7 +33,7 @@ public class Logic
         return gridCharacters;
     }
 
-    public static void PickAvailablePositionForAi(string[,] gridSymbols, List<int> availablePositions)
+    public static void PickAvailablePositionForAi(string[,] gridSymbols, List<int> availablePositions, int DIMENSION)
     {
         Random rand = new Random();
         int index = rand.Next(availablePositions.Count);
@@ -28,8 +41,8 @@ public class Logic
         availablePositions.RemoveAt(index);
 
         //conversion formulas from positions to grid
-        int row = (randomPosition - 1) / 3; // 0-based row
-        int col = (randomPosition - 1) % 3; // 0-based column
+        int row = (randomPosition - 1) / DIMENSION; // 0-based row
+        int col = (randomPosition - 1) % DIMENSION; // 0-based column
 
         gridSymbols[row, col] = "X";
     }

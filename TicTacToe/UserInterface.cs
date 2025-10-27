@@ -47,8 +47,10 @@ public class UserInterface
                     Console.ForegroundColor = ConsoleColor.White;
                 }
 
-                //Print the output
-                Console.Write("  " + availablePositions[i] + "  ");
+                // Format the number to 2 digits
+                string cell = availablePositions[i].ToString("D2");
+
+                Console.Write("  " + cell + "  ");
                 Console.ForegroundColor = ConsoleColor.Gray;
                 i++;
             }
@@ -130,15 +132,19 @@ public class UserInterface
         
         do
         {
-            Console.WriteLine("In which position would you like to introduce your next 'O'?");
-            validSelection = int.TryParse(Console.ReadKey(true).KeyChar.ToString(), out selectionPosition);
-        } while (!validSelection || !availablePositions.Contains(selectionPosition));
+            Console.WriteLine($"Enter a position (1 to {dimension * dimension}) for your next 'O':");
+            string? input = Console.ReadLine(); // read full line
+
+            validSelection = int.TryParse(input, out selectionPosition) 
+                             && availablePositions.Contains(selectionPosition);
+
+        } while (!validSelection);
         
         availablePositions.Remove(selectionPosition);
         
         //conversion formulas from positions to grid
-        int row = (selectionPosition - 1) / 3;   // 0-based row
-        int col = (selectionPosition - 1) % 3;   // 0-based column
+        int row = (selectionPosition - 1) / dimension;   // 0-based row
+        int col = (selectionPosition - 1) % dimension;   // 0-based column
         
         gridCharacters[row, col] = "O";
         Console.WriteLine("You selected your next position: ");
