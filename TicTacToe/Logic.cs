@@ -50,21 +50,47 @@ public class Logic
     }
 
 
-    private static bool CheckingAllHorizontalLines(string[,] charactersGrid)
+    public static bool CheckingAllHorizontalLines(string[,] charactersGrid)
     {
         int rows = charactersGrid.GetLength(0);
+        int columns = charactersGrid.GetLength(1);
         bool anyRowWinning = false;
         for (int row = 0; row < rows; row++)
         {
-            if (
-                IsWinningLine(charactersGrid[row, 0], charactersGrid[row, 1], charactersGrid[row, 2]))
+            string first = charactersGrid[row, 0];
+            bool rowWinning = true;
+            for (int column = 1; column < columns; column++)
+            {
+                //case with no completed line (equals "_") => break with no winner
+                if (first == "_")
+                {
+                    rowWinning = false;
+                    break;
+                }
+                
+                //case with completed line => checks the logic
+                if (charactersGrid[row, column] != first)
+                {
+                    rowWinning = false;
+                    break;
+                }
+            }
+
+            if (rowWinning)
             {
                 anyRowWinning = true;
             }
         }
 
-        return anyRowWinning;
+        if (anyRowWinning)
+        {
+           return (true);
+        }
+
+        return false; //no column winning
     }
+    
+    
 
     private static bool CheckingAllVerticalLines(string[,] charactersGrid)
     {

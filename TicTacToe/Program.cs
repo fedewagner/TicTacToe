@@ -59,7 +59,7 @@
 
                 if (isThereAWinner)
                 {
-                    UserInterface.InformWinners();
+                    UserInterface.InformWinners(); 
                     break;
                 }
             }
