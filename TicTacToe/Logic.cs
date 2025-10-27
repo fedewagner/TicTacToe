@@ -39,10 +39,9 @@ public class Logic
     {
         bool isHorizontalWinner = CheckingAllHorizontalLines(gridCharacters);
         bool isVerticalWinner = CheckingAllVerticalLines(gridCharacters);
-        bool isMainDiagonalWinner = CheckingMainDiagonal(gridCharacters);
-        bool isAntiDiagonalWinner = CheckingAntiDiagonal(gridCharacters);
+        bool isMainDiagonalWinner = CheckingDiagagonals(gridCharacters);
         
-        if (isHorizontalWinner || isVerticalWinner || isMainDiagonalWinner || isAntiDiagonalWinner)
+        if (isHorizontalWinner || isVerticalWinner || isMainDiagonalWinner)
         {
             return true;
         }
@@ -132,20 +131,62 @@ public class Logic
         return false; //no column winning
     }
 
-    private static bool CheckingMainDiagonal(string[,] charactersGrid)
+    public static bool CheckingDiagagonals(string[,] charactersGrid)
     {
-        bool mainDiagonalWinning = IsWinningLine(charactersGrid[0, 0], charactersGrid[1, 1], charactersGrid[2, 2]);
-        return mainDiagonalWinning;
-    }
-    
-    private static bool CheckingAntiDiagonal(string[,] charactersGrid)
-    {
-        bool antiDiagonalWinning = IsWinningLine(charactersGrid[2, 0], charactersGrid[1, 1], charactersGrid[0, 2]);
-        return antiDiagonalWinning;
-    }
+        int rows = charactersGrid.GetLength(0);
+        int columns = charactersGrid.GetLength(1);
+        bool isDiagonal1AWinner = true;
+        bool isDiagonal2AWinner = true;
+        bool isAnyDiagonalLineWinning = false;
+        string firstElementDiagonal1 = charactersGrid[0, 0];
+        for (int row = 1, col = 1; row < rows && col < columns; row++, col++)
+        {
+            
+            //case with no completed line (equals "_") => break with no winner
+            if (firstElementDiagonal1 == "_")
+            {
+                isDiagonal1AWinner = false;
+                break;
+            }
+                
+            //case with completed line => checks the logic
+            if (charactersGrid[row, col] != firstElementDiagonal1)
+            {
+                isDiagonal1AWinner = false;
+                break;
+            }
+        }
 
-    private static bool IsWinningLine(string a, string b, string c)
-    {
-        return a == b && b == c && a != "_";
+        int lastRow = charactersGrid.GetLength(0) - 1;
+        string firstElementDiagonal2 = charactersGrid[lastRow, 0];
+        for (int row = lastRow - 1, col = 1; row >= 0 && col < columns; row--, col++)
+        {
+            
+            //case with no completed line (equals "_") => break with no winner
+            if (firstElementDiagonal2 == "_")
+            {
+                isDiagonal2AWinner = false;
+                break;
+            }
+                
+            //case with completed line => checks the logic
+            if (charactersGrid[row, col] != firstElementDiagonal2)
+            {
+                isDiagonal2AWinner = false;
+                break;
+            }
+        }
+
+        if (isDiagonal1AWinner)
+        {
+            isAnyDiagonalLineWinning = true;
+        }
+
+        if (isDiagonal2AWinner)
+        {
+            isAnyDiagonalLineWinning = true;
+        }
+
+        return isAnyDiagonalLineWinning;
     }
 }
