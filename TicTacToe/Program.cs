@@ -6,7 +6,7 @@
         {
 
             //grid dimension. TICTACTOE = 3X3
-            const int DIMENSION = 3;
+            const int DIMENSION = 3; 
             
             //Define and Fill Empty grid
             string[,] gridCharacters = Logic.FillEmptyGrid(DIMENSION);
