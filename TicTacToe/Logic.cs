@@ -89,23 +89,47 @@ public class Logic
 
         return false; //no column winning
     }
-    
-    
 
-    private static bool CheckingAllVerticalLines(string[,] charactersGrid)
+
+    //check all Vertical Lines
+    public static bool CheckingAllVerticalLines(string[,] charactersGrid)
     {
-        int cols = charactersGrid.GetLength(1);
-        bool anyColWinning = false;
-        for (int col = 0; col < cols; col++)
+        int rows = charactersGrid.GetLength(0);
+        int columns = charactersGrid.GetLength(1);
+        bool anyColumnWinning = false;
+
+        for (int column = 0; column < columns; column++)
         {
-            if (
-                IsWinningLine(charactersGrid[0, col], charactersGrid[1, col], charactersGrid[2, col]))
+            string first = charactersGrid[0, column];
+            bool columnWinning = true;
+            for (int row = 1; row < rows; row++)
             {
-                anyColWinning = true;
+                //case with no completed line (equals "_") => break with no winner
+                if (first == "_")
+                {
+                    columnWinning = false;
+                    break;
+                }
+                
+                //case with completed line => checks the logic
+                if (charactersGrid[row, column] != first)
+                {
+                    columnWinning = false;
+                    break; //this row doesn't win
+                }
+            }
+
+            if (columnWinning)
+            {
+                anyColumnWinning = true;
             }
         }
 
-        return anyColWinning;
+        if (anyColumnWinning)
+        {
+            return true; //a column is winning
+        }
+        return false; //no column winning
     }
 
     private static bool CheckingMainDiagonal(string[,] charactersGrid)
