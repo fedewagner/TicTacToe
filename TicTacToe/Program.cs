@@ -64,7 +64,7 @@
                 }
             }
 
-            if (availablePositions.Count == 0)
+            if (availablePositions.Count == 0 && !isThereAWinner)
             {
                 UserInterface.InformTie();
             }
