@@ -19,18 +19,6 @@ public class UserInterface
     public static void PrintEmptyGrid(int dimension, List<int> availablePositions)
     {
         int i = 0;
-
-        Console.Write("+");
-        for (int column = 0; column < dimension; column++)
-        {
-            Console.Write("--+--");
-        }
-
-        Console.Write("+");
-        Console.WriteLine();
-
-        // int item = 0;
-
         //fill the array
         for (int row = 0; row < dimension; row++)
         {
@@ -50,7 +38,7 @@ public class UserInterface
                 // Format the number to 2 digits
                 string cell = availablePositions[i].ToString("D2");
 
-                Console.Write("  " + cell + "  ");
+                Console.Write(" " + cell + " ");
                 Console.ForegroundColor = ConsoleColor.Gray;
                 i++;
             }
@@ -59,15 +47,7 @@ public class UserInterface
             Console.Write("|");
             Console.WriteLine();
         }
-
-        //Print the bottom border(one extra at the beginning and one at the end)
-        Console.Write("+");
-        for (int column = 0; column < dimension; column++)
-        {
-            Console.Write("--+--");
-        }
-
-        Console.WriteLine("+");
+        
     }
     
     
